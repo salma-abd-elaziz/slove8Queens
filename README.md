@@ -1,0 +1,1 @@
+# slove8Queens
