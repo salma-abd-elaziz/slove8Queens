@@ -2,19 +2,19 @@ package fouthYear.AI;
 
 import fouthYear.AI.Luncher;
 public class Queen {
-	private int colunmnNumber;
+	private int columnNumber;
 	private int rowNumber;
 	
-	public Queen(int colNo, int rowNo){
-		this.colunmnNumber = colNo;
+	public Queen(int rowNo, int colNo){
 		this.rowNumber = rowNo;
+		this.columnNumber = colNo;
 	}
-
+	// Setter and getter for variable.
 	public int getColunmnNumber() {
-		return colunmnNumber;
+		return columnNumber;
 	}
 	public void setColunmnNumber(int colunmnNumber) {
-		this.colunmnNumber = colunmnNumber;
+		this.columnNumber = colunmnNumber;
 	}
 	
 	public int getRowNumber() {
@@ -30,11 +30,11 @@ public class Queen {
 	 * 		the value that the queen will move by to the right.
 	 * */
 	public void moveRight(int offset){
-		colunmnNumber += offset;
+		columnNumber += offset;
 		// Check if the new column number if bigger than the board.
-		if (colunmnNumber > Luncher.queensNumber - 1) {
-			if (colunmnNumber % (Luncher.queensNumber - 1) == 0) colunmnNumber = Luncher.queensNumber - 1;
-			else colunmnNumber %= (Luncher.queensNumber - 1);
+		if (columnNumber > Luncher.queensNumber - 1) {
+			if (columnNumber % (Luncher.queensNumber - 1) == 0) columnNumber = Luncher.queensNumber - 1;
+			else columnNumber %= (Luncher.queensNumber - 1);
 		}
 	}
 	
@@ -47,30 +47,11 @@ public class Queen {
 		// The two queens on the same row.
 		if (queen.getRowNumber() == rowNumber) return true;
 		// The two queens on the same column.
-		else if (queen.getColunmnNumber() == colunmnNumber) return false;
+		else if (queen.getColunmnNumber() == columnNumber) return false;
 		// Check if they on the same diagonal.
-		int row , col;
-		// Down.
-		row = rowNumber + 1;
-		col = colunmnNumber + 1;
-		// Keep searching while in board bounds.
-		while (row < Luncher.queensNumber && col < Luncher.queensNumber) {
-			if(queen.getRowNumber() == row &&
-					queen.getColunmnNumber() == col) return true;
-			row++;
-			col++;
-		}
-		// Up.
-		row = rowNumber - 1;
-		col = colunmnNumber - 1;
-		// Keep searching while in board bounds.
-		while (row >= 0 && col >= 0) {
-			if(queen.getRowNumber() == row &&
-					queen.getColunmnNumber() == col) return true;
-			row--;
-			col--;
-		}
-		// Can't attach each other.
+		 else if (Math.abs(columnNumber-queen.getColunmnNumber())
+			== Math.abs(rowNumber-queen.getRowNumber())) return false;
+		// The two sates can't attach each other.
 		return false;
 	}
 	
