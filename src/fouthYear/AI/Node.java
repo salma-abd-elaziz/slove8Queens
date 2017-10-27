@@ -8,7 +8,7 @@ public class Node {
 
 	// Called to generate the initial state.
 	public Node() {
-		numberOfAttacks = 0;
+		numberOfAttacks = Integer.MAX_VALUE;
 		state = new State(); // Generate a random state.
 		// Calculate its number of attacks.
 		numberOfAttacks = state.calculatenumberOfAttacks();
@@ -32,6 +32,7 @@ public class Node {
 	 * @returns a node which contain the state and the value of the best 
 	 * 		successor*/
 	public Node getBestSuccessor(){
-		return state.neighborWithlowestAttachNo();
+		// Send false to the method to not save the neighbors.
+		return state.neighborWithlowestAttachNo(false);
 	}
 }
