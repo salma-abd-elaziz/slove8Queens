@@ -5,6 +5,7 @@ public class Node {
 	private int numberOfAttacks;
 	private State state;
 	
+
 	// Called to generate the initial state.
 	public Node() {
 		numberOfAttacks = 0;
@@ -18,10 +19,14 @@ public class Node {
 		this.numberOfAttacks = numberOfAttacks;
 	}
 	
-	public int getNumberOfAttacks() {
+	public int getValue() {
 		return numberOfAttacks;
 	}
 	
+	public State getState() {
+		return state;
+	}
+
 	/*
 	 * the function calls a function on State class to find the best neighbor
 	 * @returns a node which contain the state and the value of the best 

@@ -6,9 +6,24 @@ public class SearchMethods {
 	 * 
 	 * @return the best state that it can reach in its search space.
 	 * */
-	public Queen localSearch() {
-		
-		return null;
+	public Node localSearch() {
+		// Initial Node.
+		Node current = new Node();
+		System.out.println("no of attacks " + current.getValue());
+		Luncher.p(current.getState());
+		boolean found = false;
+		while (!found) {
+			// Find the highest valued successor of current.
+			Node neighbor = current.getBestSuccessor();
+			System.out.println("Neighbor***** no of attacks " + neighbor
+					.getValue());
+			Luncher.p(neighbor.getState());
+			// If neighbor is worst than current(bigger number of attacks), I'm 
+			//not improving anymore so return current.
+			if (neighbor.getValue() >= current.getValue()) return current;
+			current = neighbor;
+		}
+		return current;
 	}
 	/* The function performs the local search algorithm with random restarts 
 	 * to found the best possible solution starting from different start points
@@ -19,17 +34,19 @@ public class SearchMethods {
 	 * @return the best state that it can reach in its search iterations.
 	 * */
 	
-	public Queen randomRestart() {
+	public Node randomRestart() {
+		
+		
 		return null;
 	}
 	
 	/*
-	 * the function implements local search, with sideway
+	 * the function implements local search, with side way
 	 *  moves to over come shoulder.
 	 *  
 	 *  @return the best state that it can reach in its search space.
 	 * */
-	public Queen localSearchWithSidewayMoves() {
+	public Node localSearchWithSidewayMoves() {
 		return null;
 	}
 	
@@ -38,7 +55,7 @@ public class SearchMethods {
 	 *  
 	 *  @return the best state that it can reach in its k beams.
 	 * */
-	public Queen kBeams() {
+	public Node kBeams() {
 		return null;
 	}
 }

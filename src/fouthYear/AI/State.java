@@ -13,6 +13,7 @@ public class State {
 	}
 
 	public State(State state){
+		stateBoard = new Queen[Luncher.queensNumber];
 		this.copyState(state);
 	}
 	// Setter and getter for variable.
@@ -36,6 +37,7 @@ public class State {
 		for (int i = 0; i < Luncher.queensNumber; i++){
 			// Generate random number, and use it as column number.
 			ranNo = rand.nextInt(Luncher.queensNumber);
+			System.out.println(ranNo);
 			stateBoard[i] = new Queen(i, ranNo);
 		}
 	}

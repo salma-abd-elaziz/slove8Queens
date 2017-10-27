@@ -47,10 +47,10 @@ public class Queen {
 		// The two queens on the same row.
 		if (queen.getRowNumber() == rowNumber) return true;
 		// The two queens on the same column.
-		else if (queen.getColunmnNumber() == columnNumber) return false;
+		else if (queen.getColunmnNumber() == columnNumber) return true;
 		// Check if they on the same diagonal.
 		 else if (Math.abs(columnNumber-queen.getColunmnNumber())
-			== Math.abs(rowNumber-queen.getRowNumber())) return false;
+			== Math.abs(rowNumber-queen.getRowNumber())) return true;
 		// The two sates can't attach each other.
 		return false;
 	}
