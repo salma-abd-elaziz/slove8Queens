@@ -1,6 +1,6 @@
 package fouthYear.AI;
 
-import fouthYear.AI.Luncher;
+import fouthYear.AI.launcher;
 public class Queen {
 	private int columnNumber;
 	private int rowNumber;
@@ -32,9 +32,9 @@ public class Queen {
 	public void moveRight(int offset){
 		columnNumber += offset;
 		// Check if the new column number if bigger than the board.
-		if (columnNumber > Luncher.queensNumber - 1) {
-			if (columnNumber % (Luncher.queensNumber - 1) == 0) columnNumber = Luncher.queensNumber - 1;
-			else columnNumber %= (Luncher.queensNumber - 1);
+		if (columnNumber > launcher.queensNumber - 1) {
+			if (columnNumber % (launcher.queensNumber - 1) == 0) columnNumber = launcher.queensNumber - 1;
+			else columnNumber %= (launcher.queensNumber - 1);
 		}
 	}
 	

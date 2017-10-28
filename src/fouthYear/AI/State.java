@@ -12,13 +12,13 @@ public class State {
 
 	public State(){
 		neighbors = new ArrayList<State>();
-		stateBoard = new Queen[Luncher.queensNumber];
+		stateBoard = new Queen[launcher.queensNumber];
 		this.genStateRan();
 	}
 
 	public State(State state){
  		neighbors = new ArrayList<State>();
-		stateBoard = new Queen[Luncher.queensNumber];
+		stateBoard = new Queen[launcher.queensNumber];
 		this.copyState(state);
 	}
 	
@@ -44,10 +44,9 @@ public class State {
 	private void genStateRan(){
 		Random rand = new Random(); 
 		int ranNo;
-		for (int i = 0; i < Luncher.queensNumber; i++){
+		for (int i = 0; i < launcher.queensNumber; i++){
 			// Generate random number, and use it as column number.
-			ranNo = rand.nextInt(Luncher.queensNumber);
-			System.out.println(ranNo);
+			ranNo = rand.nextInt(launcher.queensNumber);
 			stateBoard[i] = new Queen(i, ranNo);
 		}
 	}
@@ -58,7 +57,7 @@ public class State {
 	 *		the state that this one will be a copy of it. */
 	private void copyState(State state) {
 		Queen queen;
-		for (int i = 0; i < Luncher.queensNumber; i++) {
+		for (int i = 0; i < launcher.queensNumber; i++) {
 			// Get queen at row i.
 			queen = state.getQueenInRow(i);
 			stateBoard[i] = new Queen(i, queen.getColunmnNumber()); 
@@ -76,8 +75,8 @@ public class State {
 		State result = null;
 		int resultNoAttacks = Integer.MAX_VALUE;
 		
-		for (int i = 0; i < Luncher.queensNumber; i++) {
-			for (int j = 0; j < Luncher.queensNumber; j++) {
+		for (int i = 0; i < launcher.queensNumber; i++) {
+			for (int j = 0; j < launcher.queensNumber; j++) {
 				State neighbor = new State(this); 
 				// Move the i(th) queen by j steps for 8 times. 
 				neighbor.getQueenInRow(i).moveRight(j); 
@@ -108,12 +107,12 @@ public class State {
 		}
 		// the neighbor's number of attacks bigger then all neighbors, so it's 
 		//not added to the list.
-		if (size < SearchMethods.getK() && size == neighbors.size()){
+		if (size < SearchMethods.k && size == neighbors.size()){
 			neighbors.add(size, neighbor);
 		}
 		// if the size exceeded k return the first k elements.
-		if (neighbors.size() > SearchMethods.getK()) {
-			neighbors = new ArrayList<State>(neighbors.subList(0, SearchMethods.getK()));
+		if (neighbors.size() > SearchMethods.k) {
+			neighbors = new ArrayList<State>(neighbors.subList(0, SearchMethods.k));
 		}
 	}
 
@@ -123,8 +122,8 @@ public class State {
 	 * */
 	public int calculatenumberOfAttacks() {
 		int numberOfAttacks = 0;
-		for (int i = 0; i < Luncher.queensNumber; i++) {
-			for (int j = i + 1; j < Luncher.queensNumber; j++) {
+		for (int i = 0; i < launcher.queensNumber; i++) {
+			for (int j = i + 1; j < launcher.queensNumber; j++) {
 				if (stateBoard[i].isAttacking(stateBoard[j])) numberOfAttacks++;
 			}
 		}
