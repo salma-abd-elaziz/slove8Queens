@@ -3,6 +3,7 @@
 The project for AI course, it is an application on Local Search and its variations to solve the 8 Queens problem.
 
 Structure:
+
 • the Launcher class has an object of SearchMthods class to call the
 functions of the search
 
